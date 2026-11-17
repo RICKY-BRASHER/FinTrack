@@ -1,2 +1,6 @@
 venv/
+.venv/
 .idea/
+fintrack.db
+test_fintrack.db
+.env

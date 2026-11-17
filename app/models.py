@@ -8,7 +8,7 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     nom: Mapped[str] = mapped_column(String(50), nullable=False)
     email: Mapped[str] = mapped_column(String(50), nullable=False, unique=True, index=True)
-    motdepasse: Mapped[str] = mapped_column(String(50), nullable=False)
+    motdepasse: Mapped[str] = mapped_column(String(255), nullable=False)
     date_creation: Mapped[datetime] = mapped_column(DateTime,default=datetime.now)
     transactions: Mapped[list["Transaction"]] = relationship(back_populates="proprietaire")
 

@@ -1,12 +1,18 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker,DeclarativeBase
+from sqlalchemy.orm import sessionmaker, DeclarativeBase
+from app.config import settings
 
-URL_BASE_DE_DONNEES = "sqlite:///./fintrack.db"
 engine = create_engine(
-    URL_BASE_DE_DONNEES,
-    connect_args={"check_same_thread": False},
+    settings.database_url,
+    pool_pre_ping=True
 )
-SessionLocal = sessionmaker(autocommit=False,autoflush=False,bind=engine)
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine
+)
+
 class Base(DeclarativeBase):
     pass
 
